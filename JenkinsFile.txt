@@ -1,0 +1,37 @@
+node {
+	stage('load){
+		steps{
+			script{
+				props=readProperties file : 'pipeline.properties'
+				echo 'loaded pipeline.properties file'
+			}
+		}
+	}
+	
+	stage('scan'){
+		steps{
+			script{
+				bat props.sonarScan
+				echo 'scan success'
+			}
+		}
+	}
+	
+	stage('build'){
+		steps{
+			script{
+				bat props.mavenBuild
+				echo 'build success'
+			}
+		}
+	}
+	
+	stage(''deploy'){
+		steps{
+			script{
+				bat props.tomcatDeploy
+				echo 'deploy success'
+			}
+		}
+	}
+}
