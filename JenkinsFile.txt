@@ -8,6 +8,16 @@ node {
 		}
 	}
 	
+	stage('read'){
+		steps{
+			script{
+				git url: props.gitURL,
+				branch:props.branch
+				echo 'reading git url'
+			}
+		}
+	}
+	
 	stage('scan'){
 		steps{
 			script{
