@@ -1,7 +1,7 @@
-node {
-	stage('Clone repository') {
-        checkout scm
-    }
+pipeline {
+    agent any
+
+    stages {
 	
 	stage('load){
 		steps{
@@ -48,4 +48,6 @@ node {
 			}
 		}
 	}
+}
+
 }
