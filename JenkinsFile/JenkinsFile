@@ -18,13 +18,13 @@ pipeline {
 		}
 		/*stage('scan') {
             steps {
-				sh props.SONAR_SCAN+' '+props.SONAR_HOST
+				bat props.SONAR_SCAN+' '+props.SONAR_HOST
 				echo 'scan success'
 			}
         }*/
 		stage('build') {
             steps {
-				sh props.MAVEN_BUILD
+				bat props.MAVEN_BUILD
 				echo 'build success'
             }
 		}
@@ -45,7 +45,7 @@ pipeline {
 		}
 		stage('deploy') {
             steps {
-				sh props.TOMCAT_DEPLOY+' '+props.TOMCAT_LOCATION
+				bat props.TOMCAT_DEPLOY+' '+props.TOMCAT_LOCATION
 				echo 'deploy success'
             }
 		}
